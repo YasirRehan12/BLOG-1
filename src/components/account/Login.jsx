@@ -53,6 +53,12 @@ const Text = styled(Typography)`
 `;
 
 
+const loginInitialValues = {
+    username: '',
+    password: ''
+};
+
+
 const signupInitialValues = {
     name: '',
     username: '',
@@ -65,6 +71,7 @@ const Login = () => {
     const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
     const [account, toggleAccount] = useState('login');
     const [signup, setSignup] = useState(signupInitialValues)
+    const [login, setLogin] = useState(loginInitialValues);
     const [error, setError] = useState("")
 
     const toggleSignup = () => {
@@ -99,6 +106,15 @@ const Login = () => {
 
     }
 
+    const onValueChange = (e) => {
+        setLogin({ ...login, [e.target.name]: e.target.value });
+    }
+    const loginUser = {
+
+
+    }
+
+
     // +++============================================================
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -116,7 +132,7 @@ const Login = () => {
 
                             {error && <Error>{error}</Error>}
 
-                            <LoginButton variant="contained">Login</LoginButton>
+                            <LoginButton variant="contained" onClick={() => loginUser()}>Login</LoginButton>
                             <Text style={{ textAlign: "center" }}>OR</Text>
                             <SignupButton onClick={() => toggleSignup()}> Create an account </SignupButton>
                         </Wrapper>
